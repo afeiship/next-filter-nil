@@ -1,7 +1,7 @@
 (function() {
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('@feizheng/next-js-core2');
-  var RETURN_NIL = function(_, value) { return value === null; };
+  var RETURN_NIL = function(_, value) { return value == null; };
 
   nx.filterNil = function(inTarget, inCallback) {
     var callback = inCallback || RETURN_NIL;
