@@ -1,6 +1,6 @@
 {
   "name": "@feizheng/next-filter-nil",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Filter null/undefined value.",
   "homepage": "https://github.com/afeiship/next-filter-nil",
   "author": {
