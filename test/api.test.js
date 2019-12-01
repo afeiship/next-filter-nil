@@ -26,8 +26,8 @@ describe('basic api test', () => {
       dad: null
     };
 
-    var res1 = nx.filterNil(target1, null);
-    var res2 = nx.filterNil(target2, undefined);
+    var res1 = nx.filterNil(target1);
+    var res2 = nx.filterNil(target2, (_, value) => value === undefined);
 
     expect(res1).toEqual({ name: 'fei', gradpa: undefined });
     expect(res2).toEqual({ name: 'fei', dad: null });
@@ -63,7 +63,9 @@ describe('basic api test', () => {
       }
     };
 
-    var res1 = nx.filterNil(target1, null);
+    var res1 = nx.filterNil(target1, (key, value, item) => {
+      return value === null;
+    });
 
     expect(res1).toEqual({
       right: 0,

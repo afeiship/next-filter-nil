@@ -1,18 +1,20 @@
 (function() {
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('next-js-core2');
+  var RETURN_NIL = function(_, value) { return value === null; };
 
-  nx.filterNil = function(inTarget, inNil) {
+  nx.filterNil = function(inTarget, inCallback) {
+    var callback = inCallback || RETURN_NIL;
     var target = Array.isArray(inTarget) ? inTarget : [inTarget];
     target &&
       target.forEach(function(item) {
         nx.forIn(item, function(key, value) {
-          if (value === inNil) {
+          if (callback(key, value, item)) {
             delete item[key];
           }
           if (item[key] !== null) {
             if (typeof item[key] === 'object') {
-              return nx.filterNil(value, inNil);
+              return nx.filterNil(value, callback);
             }
           }
         });
