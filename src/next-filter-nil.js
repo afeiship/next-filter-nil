@@ -6,19 +6,18 @@
   nx.filterNil = function(inTarget, inCallback) {
     var callback = inCallback || RETURN_NIL;
     var target = Array.isArray(inTarget) ? inTarget : [inTarget];
-    target &&
-      target.forEach(function(item) {
-        nx.forIn(item, function(key, value) {
-          if (callback(key, value, item)) {
-            delete item[key];
+    target.forEach(function(item) {
+      nx.forIn(item, function(key, value) {
+        if (callback(key, value, item)) {
+          delete item[key];
+        }
+        if (item[key] !== null) {
+          if (typeof item[key] === 'object') {
+            return nx.filterNil(value, callback);
           }
-          if (item[key] !== null) {
-            if (typeof item[key] === 'object') {
-              return nx.filterNil(value, callback);
-            }
-          }
-        });
+        }
       });
+    });
     return inTarget;
   };
 

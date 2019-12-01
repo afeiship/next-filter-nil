@@ -2,7 +2,7 @@
  * name: @feizheng/next-filter-nil
  * url: https://github.com/afeiship/next-filter-nil
  * version: 1.0.0
- * date: 2019-12-01T12:23:00.247Z
+ * date: 2019-12-01T12:26:02.659Z
  * license: MIT
  */
 
@@ -14,19 +14,18 @@
   nx.filterNil = function(inTarget, inCallback) {
     var callback = inCallback || RETURN_NIL;
     var target = Array.isArray(inTarget) ? inTarget : [inTarget];
-    target &&
-      target.forEach(function(item) {
-        nx.forIn(item, function(key, value) {
-          if (callback(key, value, item)) {
-            delete item[key];
+    target.forEach(function(item) {
+      nx.forIn(item, function(key, value) {
+        if (callback(key, value, item)) {
+          delete item[key];
+        }
+        if (item[key] !== null) {
+          if (typeof item[key] === 'object') {
+            return nx.filterNil(value, callback);
           }
-          if (item[key] !== null) {
-            if (typeof item[key] === 'object') {
-              return nx.filterNil(value, callback);
-            }
-          }
-        });
+        }
       });
+    });
     return inTarget;
   };
 
