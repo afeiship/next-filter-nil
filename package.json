@@ -1,6 +1,6 @@
 {
   "name": "@feizheng/next-filter-nil",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Filter null/undefined value.",
   "homepage": "https://github.com/afeiship/next-filter-nil",
   "author": {
@@ -15,7 +15,7 @@
   "main": "dist/next-filter-nil.js",
   "license": "MIT",
   "devDependencies": {
-    "@feizheng/next-nice-comments": "^1.0.0",
+    "@feizheng/next-nice-comments": "^1.0.1",
     "@feizheng/rake-git": "^1.2.1",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
@@ -33,7 +33,7 @@
     "yargs": "^15.1.0"
   },
   "dependencies": {
-    "@feizheng/next-js-core2": "^2.4.0"
+    "@feizheng/next-js-core2": "^2.4.1"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
