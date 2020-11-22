@@ -1,21 +1,23 @@
 /*!
- * name: @feizheng/next-filter-nil
- * url: https://github.com/afeiship/next-filter-nil
- * version: 1.0.1
- * date: 2019-12-01T12:30:50.905Z
+ * name: @jswork/next-filter-nil
+ * description: Filter null/undefined value.
+ * homepage: https://github.com/afeiship/next-filter-nil
+ * version: 1.0.0
+ * date: 2020-11-22 17:28:40
  * license: MIT
  */
 
-(function() {
+(function () {
   var global = global || this || window || Function('return this')();
-  var nx = global.nx || require('@feizheng/next-js-core2');
-  var RETURN_NIL = function(_, value) { return value == null; };
+  var nx = global.nx || require('@jswork/next');
+  /* prettier-ignore */
+  var RETURN_NIL = function (_, value) { return value == null; };
 
-  nx.filterNil = function(inTarget, inCallback) {
+  nx.filterNil = function (inTarget, inCallback) {
     var callback = inCallback || RETURN_NIL;
     var target = Array.isArray(inTarget) ? inTarget : [inTarget];
-    target.forEach(function(item) {
-      nx.forIn(item, function(key, value) {
+    target.forEach(function (item) {
+      nx.forIn(item, function (key, value) {
         if (callback(key, value, item)) {
           delete item[key];
         }
@@ -33,5 +35,3 @@
     module.exports = nx.filterNil;
   }
 })();
-
-//# sourceMappingURL=next-filter-nil.js.map
