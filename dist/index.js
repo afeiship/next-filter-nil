@@ -3,7 +3,7 @@
  * description: Filter null/undefined value.
  * homepage: https://github.com/afeiship/next-filter-nil
  * version: 1.0.0
- * date: 2020-11-22 17:28:40
+ * date: 2020-11-22 17:30:04
  * license: MIT
  */
 
